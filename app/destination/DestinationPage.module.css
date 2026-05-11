@@ -1,0 +1,162 @@
+.app {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+.planetCard {
+  border: 1px solid var(--border-color);
+  max-width: 70%;
+  margin: var(--spacing-20) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-08);
+  gap: var(--spacing-08);
+}
+
+.planetCard:nth-child(odd) {
+  margin-inline-start: auto;
+}
+
+.planetCard > *:last-child {
+  margin-inline-start: auto;
+}
+
+.planetDescription {
+  padding-block-start: var(--spacing-04);
+  margin-block-end: auto;
+}
+
+.planetThumbnail {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 var(--spacing-16);
+}
+
+.wishlistItem {
+  border: 1px solid var(--border-color);
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-12);
+  margin: 0;
+  padding: var(--spacing-16);
+}
+.wishlistItem button {
+  padding: 8px 16px;
+  background: #111;
+  color: #ffd54a;
+  border: 2px solid #ffd54a;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.wishlistItemThumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 var(--spacing-16);
+}
+.wishlistList {
+  display: flex;
+  margin: var(--spacing-16) 0;
+}
+
+.wishlistCount {
+  color: #ffd54a;
+}
+
+.astroIcon {
+  font-size: 2.35em;
+  line-height: 1;
+}
+
+.addWishlistItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-block: var(--spacing-20);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.addWishlistItem p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.addWishlistItem label {
+  margin: 0;
+  white-space: nowrap;
+}
+.addWishlistItemButton {
+  padding: 15px 30px;
+  background: #111;
+  color: #00f3ff;
+  border: 2px solid #00f3ff;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.addWishlistItemButton:hover {
+  /* box-shadow: x-offset y-offset blur spread color */
+  box-shadow:
+    0 0 10px #00f3ff,
+    0 0 40px #00f3ff,
+    0 0 80px #00f3ff;
+  background: #00f3ff;
+  color: #111;
+}
+.addWishlistItem input,
+.addWishlistItem select {
+  height: 30px;
+  width: 150px;
+  align-self: flex-start;
+  gap: 2px;
+}
+
+@media (max-width: 768px) {
+  .planetCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-12);
+    padding: var(--spacing-12);
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  .planetCard:nth-child(odd) {
+    margin-inline-start: 0;
+  }
+
+  .planetCard > *:last-child {
+    margin-inline-start: 0;
+    width: 100%;
+  }
+
+  .planetDescription {
+    padding-block-start: 0;
+  }
+
+  .planetThumbnail {
+    width: 96px;
+    height: 96px;
+    margin: 0;
+  }
+
+  .wishlistList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-08);
+  }
+}
