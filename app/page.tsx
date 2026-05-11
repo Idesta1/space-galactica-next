@@ -1,24 +1,24 @@
-// app/icons/Planet.tsx
-interface PlanetProps {
-  color?: string;
-  size?: number;
-}
+import Link from "next/link";
 
-export const Planet = ({ color = "currentColor", size = 24 }: PlanetProps) => {
+export default function HomePage() {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke={color}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M2 12h20" />
-      <circle cx="12" cy="2" r="3" />
-    </svg>
+    <main className="flex min-h-[70vh] flex-col items-center justify-center gap-8 px-6 text-center">
+      <div className="max-w-2xl space-y-4">
+        <p className="text-sm tracking-[0.2em]">SO, YOU WANT TO TRAVEL TO</p>
+        <p className="text-6xl font-semibold">SPACE</p>
+        <p className="text-base">
+          Let&apos;s face it; if you want to go to space, you might as well
+          genuinely go to outer space and not hover kind of on the edge of it.
+          Well sit back, and relax because we&apos;ll give you a truly out of
+          this world experience!
+        </p>
+      </div>
+      <Link
+        href="/about_us"
+        className="rounded-full border border-white/40 px-8 py-3 text-sm tracking-[0.15em]"
+      >
+        EXPLORE
+      </Link>
+    </main>
   );
-};
+}

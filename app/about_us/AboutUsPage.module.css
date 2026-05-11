@@ -4,16 +4,16 @@
   height: 100vh;
 }
 
-h1 {
+.app h1 {
   font-weight: 200;
 }
 
-h2 {
+.app h2 {
   font-size: 21px;
   opacity: 0.9;
 }
 
-p {
+.app p {
   font-size: 14px;
 }
 

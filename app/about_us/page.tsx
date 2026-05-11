@@ -1,10 +1,11 @@
 import OurValues from "./ourvalues";
 import OurCrew from "./ourcrew";
 import OurPartners from "./ourpartners";
+import styles from "./AboutUsPage.module.css";
 
 export const Crew = () => {
   return (
-    <div className="fullBGpicture">
+    <div className={`${styles.app} fullBGpicture`}>
       <main className="mainContent">
         <h1>About us</h1>
         <section className="card">
