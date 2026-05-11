@@ -43,6 +43,8 @@ const OurPartners = () => {
             src={partner.image}
             alt={`Partner ${partner.id}`}
             className={styles.partnerLogo}
+            width={150}
+            height={70}
           />
         ))}
       </div>

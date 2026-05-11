@@ -51,6 +51,8 @@ const OurCrew = () => {
               src={member.image}
               alt={member.name}
               className={styles.crewImage}
+              width={220}
+              height={220}
             />
             <h3>{member.name}</h3>
             <h4>{member.Title}</h4>
