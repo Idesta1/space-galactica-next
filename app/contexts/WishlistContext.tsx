@@ -55,7 +55,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
   const addToWishlist = () => {
     addPlanetToWishlist(
       `Custom planet ${planetsWishlist.length + 1}`,
-      "/destination/image-europa.png",
+      "/destination/destination_img/image-europa.png",
     );
   };
 

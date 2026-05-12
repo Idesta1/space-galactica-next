@@ -5,8 +5,12 @@ interface AddWishlistItemProps {
   onAddWishlistItem: (name: string, thumbnail: string) => void;
 }
 
-export const AddWishlistItem = ({ onAddWishlistItem }: AddWishlistItemProps) => {
-  const [thumbnail, setThumbnail] = useState("/destination/image-europa.png");
+export const AddWishlistItem = ({
+  onAddWishlistItem,
+}: AddWishlistItemProps) => {
+  const [thumbnail, setThumbnail] = useState(
+    "/destination/destination_img/image-europa.png",
+  );
   const [customWishlistItem, setCustomWishlistItem] = useState("");
 
   const onAddItemPressed = (e: MouseEvent<HTMLButtonElement>) => {
@@ -16,7 +20,7 @@ export const AddWishlistItem = ({ onAddWishlistItem }: AddWishlistItemProps) => 
     }
     onAddWishlistItem(customWishlistItem, thumbnail);
     setCustomWishlistItem("");
-    setThumbnail("/destination/image-europa.png");
+    setThumbnail("/destination/destination_img/image-europa.png");
   };
 
   return (
@@ -36,10 +40,18 @@ export const AddWishlistItem = ({ onAddWishlistItem }: AddWishlistItemProps) => 
         value={thumbnail}
         onChange={(e) => setThumbnail(e.target.value)}
       >
-        <option value="/destination/image-europa.png">EUROPA</option>
-        <option value="/destination/image-mars.png">MARS</option>
-        <option value="/destination/image-moon.png">MOON</option>
-        <option value="/destination/image-titan.png">TITAN</option>
+        <option value="/destination/destination_img/image-europa.png">
+          EUROPA
+        </option>
+        <option value="/destination/destination_img/image-mars.png">
+          MARS
+        </option>
+        <option value="/destination/destination_img/image-moon.png">
+          MOON
+        </option>
+        <option value="/destination/destination_img/image-titan.png">
+          TITAN
+        </option>
       </select>
       <button
         className={styles.addWishlistItemButton}
