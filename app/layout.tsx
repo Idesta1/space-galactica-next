@@ -1,35 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { WishlistProvider } from "./contexts/WishlistContext";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import AppLayoutShell from "./components/Layout";
+import { WishlistProvider } from "./contexts/WishlistContext";
 
 export const metadata: Metadata = {
-  title: "Galactica",
-  description: "Your space travel agency",
+  title: "Space Galactica",
+  description: "Explore destinations, crew, and space collaborations.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <WishlistProvider>{children}</WishlistProvider>
+    <html lang="en">
+      <body>
+        <WishlistProvider>
+          <AppLayoutShell>{children}</AppLayoutShell>
+        </WishlistProvider>
       </body>
     </html>
   );

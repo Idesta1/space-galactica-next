@@ -1,0 +1,20 @@
+.homePage {
+  min-height: calc(100vh - var(--header-height));
+  background-image: url("/home/background-home-desktop.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .homePage {
+    background-image: url("/home/background-home-tablet.jpg");
+  }
+}
+
+@media (max-width: 640px) {
+  .homePage {
+    background-image: url("/home/background-home-mobile.jpg");
+  }
+}

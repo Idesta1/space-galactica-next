@@ -5,18 +5,18 @@ import styles from "./AboutUsPage.module.css";
 
 export const Crew = () => {
   return (
-    <div className={`${styles.app} fullBGpicture`}>
-      <main className="mainContent">
+    <div className={styles.app}>
+      <main className={styles.mainContent}>
         <h1>About us</h1>
-        <section className="card">
+        <section className={styles.card}>
           <h2>Our Values</h2>
           <OurValues />
         </section>
-        <section className="card">
+        <section className={styles.card}>
           <h2>The Crew</h2>
           <OurCrew />
         </section>
-        <section className="card">
+        <section className={styles.card}>
           <h2>Our Partners</h2>
           <OurPartners />
         </section>

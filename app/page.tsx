@@ -1,8 +1,11 @@
 import Link from "next/link";
+import styles from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-[70vh] flex-col items-center justify-center gap-8 px-6 text-center">
+    <main
+      className={`${styles.homePage} flex flex-col items-center justify-center gap-8 px-6 text-center`}
+    >
       <div className="max-w-2xl space-y-4">
         <p className="text-sm tracking-[0.2em]">SO, YOU WANT TO TRAVEL TO</p>
         <p className="text-6xl font-semibold">SPACE</p>

@@ -31,7 +31,7 @@ export const Navbar = () => {
     <header className={styles.headerContainer}>
       <div className={styles.navbarLogo}>
         <Link href="/">
-          <Image src="/shared/logo.svg" alt="" width={24} height={24} />{" "}
+          <Image src="/globe.svg" alt="Galactica logo" width={24} height={24} />{" "}
           GALACTICA
         </Link>
       </div>

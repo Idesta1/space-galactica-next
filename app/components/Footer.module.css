@@ -1,5 +1,5 @@
 .footer {
-  background-color: #ababab9b;
+  background-color: #b9afaf;
   color: #000;
   padding: var(--spacing-20) var(--spacing-40);
   display: flex;
@@ -49,11 +49,23 @@
   padding-block: var(--spacing-04);
 }
 
+.footerListItem a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .footerListItem img {
   width: 24px;
   height: 24px;
   object-fit: contain;
   display: block;
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .pages ul {

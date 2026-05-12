@@ -65,7 +65,7 @@ const PlanetsWishlistItem = ({
   );
 };
 
-export const Destinations = () => {
+const DestinationsContent = () => {
   const {
     planetsWishlist,
     wishlistCount,
@@ -76,10 +76,10 @@ export const Destinations = () => {
   } = useWishlist();
 
   return (
-    <div className="fullBGpicture">
-      <main className="mainContent">
+    <div className={styles.background}>
+      <main className={styles.mainContent}>
         <h1>Travel Destinations</h1>
-        <section className="card">
+        <section className={styles.card}>
           <h2>WishList</h2>
 
           {wishlistCount === 0 ? (
@@ -109,7 +109,7 @@ export const Destinations = () => {
             )}
           </div>
         </section>
-        <section className="card">
+        <section className={styles.card}>
           <h2>Possible Destinations</h2>
           {planetsData.map((planet) => (
             <PlanetCard
@@ -125,6 +125,10 @@ export const Destinations = () => {
       </main>
     </div>
   );
+};
+
+export const Destinations = () => {
+  return <DestinationsContent />;
 };
 
 export default Destinations;

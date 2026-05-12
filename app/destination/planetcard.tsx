@@ -33,7 +33,7 @@ const PlanetCard = ({
         <p>{description}</p>
       </div>
       <button
-        className="roundButton"
+        className={styles.addWishlistItemButton}
         onClick={() => togglePlanetSelection(name, thumbnail)}
       >
         {isSelected ? "REMOVE FROM WISHLIST" : "ADD TO WISHLIST"}
