@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 export const Planet = ({ color = "#000000" }) => {
   return (

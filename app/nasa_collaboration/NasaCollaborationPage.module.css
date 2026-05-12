@@ -52,11 +52,25 @@
   display: block;
 }
 
+.apodVideo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+}
+
 .apodDescription {
   margin-top: 1rem;
   line-height: 1.7;
   color: var(--nasa-text-soft);
   font-size: 0.98rem;
+}
+
+.apodSourceLink {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: #9ec7ff;
+  text-decoration: underline;
 }
 
 .dateBadge {

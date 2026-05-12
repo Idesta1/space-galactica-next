@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 import { useState, useEffect } from "react";
 import styles from "./NasaCollaborationPage.module.css";
@@ -18,9 +17,35 @@ const NASA_URLs = {
   marsRoverPhoto: `https://rovers.nebulum.one/api/v1/rovers/curiosity/photos?earth_date=${latestDate}&api_key=${API_KEY}`,
 };
 
+const getEmbeddableVideoUrl = (url: string) => {
+  if (!url) {
+    return "";
+  }
+
+  // APOD often returns YouTube links that need the embed form for iframes.
+  if (url.includes("youtube.com/watch?v=")) {
+    return url.replace("watch?v=", "embed/");
+  }
+
+  if (url.includes("youtu.be/")) {
+    const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  }
+
+  return url;
+};
+
 export const NasaCollaboration = () => {
-  const [dailyImg, setDailyImg] = useState<{ media_type?: string; title?: string; url?: string; explanation?: string }>({});
-  const [roverPhoto, setRoverPhoto] = useState<{ img_src?: string; earth_date?: string; rover?: { name?: string } }[]>([]);
+  const [dailyImg, setDailyImg] = useState<{
+    media_type?: string;
+    title?: string;
+    url?: string;
+    hdurl?: string;
+    explanation?: string;
+  }>({});
+  const [roverPhoto, setRoverPhoto] = useState<
+    { img_src?: string; earth_date?: string; rover?: { name?: string } }[]
+  >([]);
   const [isLoadingRoverPhotos, setIsLoadingRoverPhotos] = useState(true);
   const [roverError, setRoverError] = useState("");
   const [isLoadingDailyImg, setIsLoadingDailyImg] = useState(true);
@@ -49,9 +74,18 @@ export const NasaCollaboration = () => {
         setIsLoadingDailyImg(true);
         setDailyImgError("");
 
-        const dailyImgResponse = await fetch(
-          NASA_URLs.astronomyPicOfTheDay,
-        ).then((response) => response.json());
+        const response = await fetch(NASA_URLs.astronomyPicOfTheDay);
+        const dailyImgResponse = await response.json();
+
+        console.log("[APOD] status:", response.status);
+        console.log("[APOD] payload:", dailyImgResponse);
+
+        if (!response.ok) {
+          throw new Error(
+            dailyImgResponse?.error?.message || "APOD fetch failed",
+          );
+        }
+
         setDailyImg(dailyImgResponse);
       } catch {
         setDailyImgError(
@@ -83,18 +117,41 @@ export const NasaCollaboration = () => {
 
               <div className={styles.apodFrame}>
                 {dailyImg.media_type === "image" ? (
-                  <Image
-                    className={styles.nasaPicOfTheDayImg}
-                    src={dailyImg.url || ""}
-                    alt={dailyImg.title || ""}
-                  />
+                  <>
+                    {/* APOD hosts sometimes work better with direct browser image rendering. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className={styles.nasaPicOfTheDayImg}
+                      src={dailyImg.hdurl || dailyImg.url || ""}
+                      alt={dailyImg.title || "NASA APOD image"}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                    {dailyImg.url ? (
+                      <a
+                        className={styles.apodSourceLink}
+                        href={dailyImg.hdurl || dailyImg.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Open original image
+                      </a>
+                    ) : null}
+                  </>
                 ) : dailyImg.media_type === "video" ? (
-                  <iframe
-                    className={styles.apodVideo}
-                    src={dailyImg.url}
-                    title={dailyImg.title}
-                    allow="fullscreen"
-                  />
+                  dailyImg.url ? (
+                    <iframe
+                      className={styles.apodVideo}
+                      src={getEmbeddableVideoUrl(dailyImg.url)}
+                      title={dailyImg.title || "NASA APOD video"}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <p className={styles.statusText}>
+                      Video URL is unavailable.
+                    </p>
+                  )
                 ) : (
                   <p className={styles.statusText}>
                     Today&apos;s NASA media is not an image.

@@ -15,8 +15,9 @@ export default function RoverPhoto({ src, date, roverName }: RoverPhotoProps) {
           className={styles.roverImage}
           src={src}
           alt={`Rover ${roverName} - ${date}`}
-          layout="fill"
-          objectFit="cover"
+          width={400}
+          height={400}
+          style={{ objectFit: "cover" }}
         />
       </div>
       <p className={styles.meta}>{`Rover: ${roverName}`}</p>
